@@ -318,7 +318,7 @@ public class ImportFromSTS {
                                         if (n3.getNodeType() == Node.ELEMENT_NODE) {
                                             NamedNodeMap nnm2 = n3.getAttributes();
                                             String codeDis = nnm2.getNamedItem("CODE").getTextContent();
-                                            /*individu.addDiscipline(dicoDisciplines.get(codeDis));*/
+                                            formateur.addDiscipline(dicoDisciplines.get(codeDis));
 
                                         }
                                     }
@@ -340,7 +340,7 @@ public class ImportFromSTS {
                                         String codeDiv = nnm3.getNamedItem("CODE").getTextContent();
                                         //System.out.println(id+" => "+codeDiv);
                                         //lstDiv.add(dicoDivisions.get(codeDiv));
-                                        /*individu.addDivision(dicoDivisions.get(codeDiv));*/
+                                        formateur.addDivision(dicoDivisions.get(codeDiv));
                                     }
                                 }
                             }
