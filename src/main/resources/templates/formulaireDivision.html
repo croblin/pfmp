@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="fr" xmlns:th="http://www.thymleag.org">
+<head>
+    <title>Formulaire d'ajout/de modification des divisions</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<form method="POST" action="#" th:action="@{/division/ajout}" th:object="${division}" >
+    <fieldset>
+        <legend class='legende'>Formulaire d'ajout/de modification des divisions</legend>
+        <div>
+            <br/>
+            <input type="hidden" name="id" th:field="${division.id}" />
+            <label for="code">Code :</label>
+            <input type="text" id="code" name="code" th:field="${division.code}" />
+            <br/>
+            <label for="libelle">Libell&eacute; court :</label>
+            <input type="text" id="libelle" name="libelle" th:field="${division.libelle}"/>
+            <br/>
+            <input type="submit" />
+        </div>
+    </fieldset>
+</form>
+<br/>
+<a href="/index">Retour vers l'index</a>
+</body>
+</html>

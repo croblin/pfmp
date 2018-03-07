@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<!-- on définit ici qu'on va démarer nos instructions Thymleaf par "th", afin que ces
+     instructions soient reconnus par le moteur de template Thymleaf, mais l'on aurait
+     très bien pu utiliser un autre mot si on le souhaite à la place de "th" -->
+<html lang="fr" xmlns:th="http://www.thymleag.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Liste des disciplines</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Code</th>
+        <th>Libellé</th>
+    </tr>
+    <tr th:each="discipline : ${disciplines}">
+        <td th:text="${discipline.id}">1</td>
+        <td th:text="${discipline.code}">AZERTY</td>
+        <td th:text="${discipline.libelle}">1BTS2</td>
+        <td>
+            <a th:href="@{'/discipline/modif/'+${discipline.id}}" sec:authorize="hasAnyAuthority('ADMIN','USER')">Modifier</a>
+            <a th:href="@{'/discipline/suppr/'+${discipline.id}}" sec:authorize="hasAnyAuthority('ADMIN','USER')">Supprimer</a>
+        </td>
+    </tr>
+</table>
+<a href="/discipline/ajout">Ajouter une discipline</a>
+<br/>
+<a href="/index">Retour vers l'index</a>
+</body>
+</html>

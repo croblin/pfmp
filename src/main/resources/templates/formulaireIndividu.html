@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="fr" xmlns:th="http://www.thymleag.org">
+<head>
+    <title>Formulaire d'ajout/de modification des individus</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<form method="POST" action="#" th:action="@{/individu/ajout}" th:object="${individu}" >
+    <fieldset>
+        <legend class='legende'>Formulaire d'ajout/de modification des individus</legend>
+        <div>
+            <br/>
+            <input type="hidden" name="id" th:field="${individu.id}" />
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" name="nom" th:field="${individu.nom}" />
+            <br/>
+            <label for="prenom">Prénom :</label>
+            <input type="text" id="prenom" name="prenom" th:field="${individu.prenom}" />
+            <br/>
+            <label for="civilite">Civilité :</label>
+            <input type="text" id="civilite" name="civilite" th:field="${individu.civilite}" />
+            <br/>
+            <label for="codeSynchro">Code de synchronisation :</label>
+            <input type="text" id="codeSynchro" name="codeSynchro" th:field="${individu.codeSynchro}" />
+            <br/>
+            <label for="telephoneFixe">Téléphone fixe :</label>
+            <input type="text" id="telephoneFixe" name="telephoneFixe" th:field="${individu.telephoneFixe}" />
+            <br/>
+            <label for="telephoneMobile">Téléphone portable :</label>
+            <input type="text" id="telephoneMobile" name="telephoneMobile" th:field="${individu.telephoneMobile}" />
+            <br/>
+            <label for="email">Email :</label>
+            <input type="text" id="email" name="email" th:field="${individu.email}" />
+            <br/>
+            <input type="submit" />
+        </div>
+    </fieldset>
+</form>
+<br/>
+<a href="/index">Retour vers l'index</a>
+</body>
+</html>

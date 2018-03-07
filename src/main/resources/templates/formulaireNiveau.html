@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<!-- on définit ici qu'on va démarer nos instructions Thymleaf par "th", afin que ces
+     instructions soient reconnus par le moteur de template Thymleaf, mais l'on aurait
+     très bien pu utiliser un autre mot si on le souhaite à la place de "th" -->
+<html lang="fr" xmlns:th="http://www.thymleag.org">
+<head>
+    <title>Formulaire d'ajout/de modification des niveaux</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <!-- la première instruction th:action permet de spécifier à notre template qu'on va
+         envoyer les données de notre formulaire vers '/niveau/ajout' -->
+    <!-- la seconde instruction th:object="${niveau}" permet d'indiquer qu'on va rattacher
+         les données du formulaire avec l'objet 'niveau', et ensuite avec les instructions
+         *{code} ou encore *{court}, on n'a pas besoin de repréciser qu"on travaille sur
+         l'objet 'niveau'. Par contre, on peut très bien continuer de marquer
+         l'instruction th:field="${niveau.code} sans déclarer
+         l'instruction th:object="${niveau}" -->
+    <form method="POST" action="#" th:action="@{/niveau/ajout}" th:object="${niveau}" >
+        <fieldset>
+            <legend class='legende'>Formulaire d'ajout/de modification des niveaux</legend>
+            <div>
+                <br/>
+                <!-- on passe en paramètre caché l'id du client associé à ce formulaire pour
+                     afficher les attributs associés à ce client, s'il existe : à la création,
+                     les champs ne seront pas remplis car le client n'existe pas encore -->
+                <input type="hidden" name="id" th:field="${niveau.id}" />
+                <label for="code">Code :</label>
+                <input type="text" id="code" name="code" th:field="${niveau.code}" />
+                <br/>
+                <label for="court">Libell&eacute; court :</label>
+                <input type="text" id="court" name="court" th:field="${niveau.libelleCourt}"/>
+                <br/>
+                <label for="long">Libell&eacute; long :</label>
+                <input type="text" id="long" name="long" th:field="${niveau.libelleLong}" />
+                <br/>
+                <input type="submit" />
+            </div>
+        </fieldset>
+    </form>
+    <br/>
+    <a href="/index">Retour vers l'index</a>
+</body>
+</html>

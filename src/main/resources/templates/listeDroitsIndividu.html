@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html lang="fr" xmlns:th="http://www.thymleag.org">
+<head>
+    <title>Liste des droits de l'individu <span th:text="${individu.prenom}" /> <span th:text="${individu.nom}" /></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2>Liste des droits de l'individu <span th:text="${individu.prenom}" /> <span th:text="${individu.nom}" /></h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Login</th>
+        <th>Mot de passe</th>
+        <th>Mot de passe crypté</th>
+    </tr>
+    <tr>
+        <td th:text="${individu.id}">1</td>
+        <td th:text="${individu.nom}">ROBLIN</td>
+        <td th:text="${individu.prenom}">Christophe</td>
+        <td th:text="${individu.login}">admin</td>
+        <td th:text="${individu.mdpOrigine}">password</td>
+        <td th:text="${individu.mdp}">password</td>
+    </tr>
+</table>
+<a th:href="@{'/individu/liste/'}">Retour vers la liste des individus</a>
+<br/>
+<a href="/index">Retour vers l'index</a>
+</body>
+</html>

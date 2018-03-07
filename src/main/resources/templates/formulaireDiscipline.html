@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html lang="fr" xmlns:th="http://www.thymleag.org">
+<head>
+    <title>Formulaire d'ajout/de modification des disciplines</title>
+</head>
+<body>
+<form method="POST" action="#" th:action="@{/discipline/ajout}" th:object="${discipline}" >
+    <fieldset>
+        <legend class='legende'>Formulaire d'ajout/de modification des individus</legend>
+        <div>
+            <br/>
+            <input type="hidden" name="id" th:field="${discipline.id}" />
+            <label for="code">Code :</label>
+            <input type="text" id="code" name="code" th:field="${discipline.code}" />
+            <br/>
+            <label for="libelle">Prénom :</label>
+            <input type="text" id="libelle" name="libelle" th:field="${discipline.libelle}" />
+            <br/>
+            <input type="submit" />
+        </div>
+    </fieldset>
+</form>
+
+</body>
+</html>

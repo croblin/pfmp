@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<!-- on définit ici qu'on va démarer nos instructions Thymleaf par "th", afin que ces
+     instructions soient reconnus par le moteur de template Thymleaf, mais l'on aurait
+     très bien pu utiliser un autre mot si on le souhaite à la place de "th" -->
+<html lang="fr" xmlns:th="http://www.thymleag.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Liste des niveaux</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Code</th>
+            <th>Libellé court</th>
+            <th>Libellé long</th>
+        </tr>
+        <tr th:each="niveau : ${niveaux}">
+            <!-- à la place de "${niveau.id}", comme pour Freemarker pour accéder à la méthode
+                 getId() de Niveau, on peut aussi écrire "${niveau.getId()}" -->
+            <td th:text="${niveau.id}">1</td>
+            <td th:text="${niveau.code}">AZERTY</td>
+            <td th:text="${niveau.libelleCourt}">1BTS2</td>
+            <td th:text="${niveau.libelleLong}">Premi&egrave;re Ann&eacute;e BTS 2 ans</td>
+            <td>
+                <a th:href="@{'/niveau/modif/'+${niveau.id}}" sec:authorize="hasAnyAuthority('ADMIN','USER')">Modifier</a>
+                <a th:href="@{'/niveau/suppr/'+${niveau.id}}" sec:authorize="hasAnyAuthority('ADMIN','USER')">Supprimer</a>
+            </td>
+        </tr>
+    </table>
+    <a href="/niveau/ajout">Ajouter un niveau</a>
+    <br/>
+    <a href="/index">Retour vers l'index</a>
+</body>
+</html>

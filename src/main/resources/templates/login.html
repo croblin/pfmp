@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="fr" xmlns:th="http://www.thymleag.org">
+<head>
+    <title>Connexion utilisateur</title>
+    <th:block th:replace="fragments/header :: header">
+
+    </th:block>
+</head>
+<body>
+<form action="#" th:action="@{/login}" method="POST">
+    <fieldset>
+        <legend class='legende'>Connexion utilisateur</legend>
+        <p>
+            <label for="username">Login</label>
+            <!-- l'attribut 'name' doit forcément avoir le nom 'username' pour Spring Security -->
+            <input type="text" id="username" name="username" />
+        </p>
+        <p>
+            <label for="password">Mot de passe</label>
+            <!-- l'attribut 'name' doit forcément avoir le nom 'password' pour Spring Security -->
+            <input type="password" id="password" name="password" />
+        </p>
+        <p>
+            <input type="submit" />
+        </p>
+    </fieldset>
+</form>
+<th:block th:replace="fragments/footer :: footer">
+
+</th:block>
+</body>
+</html>

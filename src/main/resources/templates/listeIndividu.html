@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<!-- on définit ici qu'on va démarer nos instructions Thymleaf par "th", afin que ces
+     instructions soient reconnus par le moteur de template Thymleaf, mais l'on aurait
+     très bien pu utiliser un autre mot si on le souhaite à la place de "th" -->
+<html lang="fr" xmlns:th="http://www.thymleag.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Liste des individus</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Civilité</th>
+        <th>Date de naissance</th>
+        <th>Code de synchronisation</th>
+        <th>Téléphone fixe</th>
+        <th>Téléphone mobile</th>
+        <th>Email</th>
+    </tr>
+    <tr th:each="individu : ${individus}">
+        <td th:text="${individu.id}">1</td>
+        <td th:text="${individu.nom}">ROBLIN</td>
+        <td th:text="${individu.prenom}">Christophe</td>
+        <td th:text="${individu.civilite}">Monsieur</td>
+        <td th:text="${individu.codeSynchro}">AZERTY</td>
+        <td th:text="${individu.telephoneFixe}">0101010101</td>
+        <td th:text="${individu.telephoneMobile}">0606060606</td>
+        <td th:text="${individu.email}">blabla@oups.com</td>
+        <td>
+            <a th:href="@{'/individu/modif/'+${individu.id}}" sec:authorize="hasAnyAuthority('ADMIN','USER')">Modifier</a>
+            <a th:href="@{'/individu/suppr/'+${individu.id}}" sec:authorize="hasAnyAuthority('ADMIN','USER')">Supprimer</a>
+            <!-- on peut aussi faire appel à la méthode 'equals' commme en-dessous -->
+            <!-- <div th:if="${#strings.equals(individu.role, 'USER')}"> -->
+            <div th:if="${individu.role.equals('NOT_USER')}">
+                <a th:href="@{'/individu/droitUtilisateur/'+${individu.id}}" sec:authorize="hasAnyAuthority('ADMIN','USER')">Ajouter des droits</a>
+            </div>
+            <div th:if="${individu.role.equals('USER')}">
+                <a th:href="@{'/individu/afficherDroitsIndividu/'+${individu.id}}">Afficher les droits</a>
+            </div>
+        </td>
+    </tr>
+</table>
+<a href="/individu/ajout">Ajouter un individu</a>
+<br/>
+<a href="/index">Retour vers l'index</a>
+</body>
+</html>

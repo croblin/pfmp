@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="fr" xmlns:th="http://www.thymleag.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Index</title>
+    <th:block th:replace="fragments/header :: header">
+
+    </th:block>
+</head>
+<body>
+<div th:if="${message}">
+    <h2 th:text="${'Erreur : ' + message}"/>
+</div>
+<h1>Affichage des quantités insérés dans chaque entité du projet PFMP</h1>
+<ul>
+    <li> Nb niveaux = <span th:text="${niveaux}"/></li>
+    <li> Nb disciplines = <span th:text="${disciplines}"/></li>
+    <li> Nb divisions = <span th:text="${divisions}"/></li>
+    <li> Nb individus = <span th:text="${individus}"/></li>
+</ul>
+<h1>Gestion des entités du projet PFMP</h1>
+<ul>
+    <!-- on récupère tout le travail effectué sur l'affichage, l'ajout et la suppression de POJO dans la base 'pfmp' depuis
+         le projet 'GestionStages', à savoir les Controller et les templates Thymleaf associés à des pages HTML -->
+    <li><a th:href="@{'/niveau/liste/'}">Gérer les niveaux</a></li>
+    <li><a th:href="@{'/discipline/liste/'}">Gérer les discipline</a></li>
+    <li><a th:href="@{'/division/liste/'}">Gérer les divisions</a></li>
+    <li><a th:href="@{'/individu/liste/'}">Gérer les individus</a></li>
+</ul>
+<div sec:authorize="hasAuthority('ADMIN')">
+    <h1>Gestion de la mise à jour de la base de données des PFMP</h1>
+    <a th:href="@{'/index/update/'}">Mettre à jour la base de donées des PFMP</a>
+</div>
+
+<!-- affichons un beau bouvier -->
+<img th:src="@{'/img/bouvier.jpg'}">
+
+<th:block th:replace="fragments/footer :: footer">
+
+</th:block>
+</body>
+</html>
