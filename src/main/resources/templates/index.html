@@ -28,11 +28,11 @@
 </ul>
 <div sec:authorize="hasAuthority('ADMIN')">
     <h1>Gestion de la mise à jour de la base de données des PFMP</h1>
-    <a th:href="@{'/index/update/'}">Mettre à jour la base de donées des PFMP</a>
+    <a th:href="@{'/index/update/'}">Mettre à jour la base de données des PFMP</a>
 </div>
 
 <!-- affichons un beau bouvier -->
-<img th:src="@{'/img/bouvier.jpg'}">
+<!-- <img th:src="@{'/img/bouvier.jpg'}"> -->
 
 <th:block th:replace="fragments/footer :: footer">
 

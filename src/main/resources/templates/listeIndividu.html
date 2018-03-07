@@ -43,7 +43,7 @@
         </td>
     </tr>
 </table>
-<a href="/individu/ajout">Ajouter un individu</a>
+<a th:href="@{'/individu/ajout/'}" sec:authorize="hasAnyAuthority('ADMIN','USER')">Ajouter un individu</a>
 <br/>
 <a href="/index">Retour vers l'index</a>
 </body>
