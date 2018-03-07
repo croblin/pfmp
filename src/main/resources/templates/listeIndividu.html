@@ -31,9 +31,11 @@
         <td th:text="${individu.email}">blabla@oups.com</td>
         <td>
             <a th:href="@{'/individu/modif/'+${individu.id}}" sec:authorize="hasAnyAuthority('ADMIN','USER')">Modifier</a>
-            <a th:href="@{'/individu/suppr/'+${individu.id}}" sec:authorize="hasAnyAuthority('ADMIN','USER')">Supprimer</a>
+            <a th:href="@{'/individu/suppr/'+${individu.id}}" sec:authorize="hasAnyAuthority('ADMIN','USER')" onclick="return confirm('Etes-vous sûr de vouloir supprimer ?')">Supprimer</a>
+
             <!-- on peut aussi faire appel à la méthode 'equals' commme en-dessous -->
             <!-- <div th:if="${#strings.equals(individu.role, 'USER')}"> -->
+
             <div th:if="${individu.role.equals('NOT_USER')}">
                 <a th:href="@{'/individu/droitUtilisateur/'+${individu.id}}" sec:authorize="hasAnyAuthority('ADMIN','USER')">Ajouter des droits</a>
             </div>
